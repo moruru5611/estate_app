@@ -1,0 +1,8 @@
+
+.streamlit/
+
+__pycache__/
+
+.mypy_cache
+
+src/__pycache__/
