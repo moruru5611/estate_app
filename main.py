@@ -1,10 +1,9 @@
 import streamlit as st
 from src.send_api import connect_api
+from src.pref_data import pref_id, change_index
 
 # secrets.tomlの取得
-api_key=st.secrets["api_key"]
-pref_id=st.secrets["pref_id"]
-change_index=st.secrets["change_index"]
+api_key = st.secrets["api_key"]
 
 # フッターのHTMLとCSS
 footer = """
@@ -40,4 +39,4 @@ with input_col2:
 with input_col3:
     year = st.number_input(label="取引時期（西暦）", value=2024, step=0)
 
-search = connect_api(api_key,prefecture, city, year) if st.button("検索") else None
+search = connect_api(api_key, prefecture, city, year) if st.button("検索") else None

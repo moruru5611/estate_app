@@ -4,12 +4,11 @@
 import streamlit as st
 import requests
 import pandas as pd
+from src.pref_data import pref_id, change_index
 
 # apiキーの取得
 api_key = st.secrets["api_key"]
 my_url = st.secrets["my_url"]
-pref_id = st.secrets["pref_id"]
-change_index = st.secrets["change_index"]
 
 
 # API接続関数
