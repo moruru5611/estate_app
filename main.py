@@ -35,7 +35,7 @@ with input_col1:
         label="都道府県", options=[index for index, i in pref_id.items()]
     )
 with input_col2:
-    city = st.text_input(label="市町村（空白可）", placeholder="大阪市")
+    city = st.text_input(label="市町村（空白、部分一致可）", placeholder="大阪市")
 with input_col3:
     year = st.number_input(label="取引時期（西暦）", value=2024, step=0)
 

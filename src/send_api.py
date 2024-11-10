@@ -24,10 +24,12 @@ def connect_api(api_key: str | int, prefecture: str, city: str | None, year: int
     def send_city_id(json_data, city: str | None):
         try:
             for item in json_data["data"]:
-                if item["name"] == city:
+                if city == "":
+                    return None
+                if city in item["name"]:
                     return item["id"]
-            if city == "":
-                return None
+                if city == "":
+                    return None
             else:
                 return "該当する市町村が存在しません"
         except KeyError:
