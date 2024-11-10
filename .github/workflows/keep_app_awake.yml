@@ -1,0 +1,18 @@
+name: Keep App Awake  # ワークフローの名前
+
+on:
+  schedule:
+    - cron: '0 8 * * *'  # 毎日 UTCの午前8時（日本時間午後5時）に実行するスケジュール
+
+jobs:
+  keep_awake:  # ジョブ名。このジョブはアプリをスリープさせないようにするためのリクエストを送る
+    runs-on: ubuntu-latest  # ジョブの実行環境（最新のUbuntuを使用）
+
+    steps:
+      - name: Send request to keep app awake  # ステップ名。このステップではリクエストを送る
+        run: |  # 以下に実行するコマンドを指定
+          curl -s -o /dev/null -w "%{http_code}" https://estateapp.streamlit.app/
+          # curl コマンドで指定URLにリクエストを送信
+          # -s : 進捗表示を非表示にし、エラーのみを表示
+          # -o /dev/null : レスポンスの内容を無視
+          # -w "%{http_code}" : HTTPステータスコードのみを出力
